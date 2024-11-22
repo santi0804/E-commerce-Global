@@ -5,8 +5,8 @@ function Home() {
 
     return (
 
-        <div className="bg-black">
-            Home:  "Hola Putos Welcome a la empresa mas grande Online"
+        <div className="bg-stone-200">
+            Home
         </div>
     )
 }
