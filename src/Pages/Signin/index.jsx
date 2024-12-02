@@ -1,12 +1,13 @@
+import Layout from "../../Components/Layout";
 
 
 function Signin() {
 
     return (
 
-        <div className="bg-black">
+        <Layout>
             Signin
-        </div>
+        </Layout>
     )
 }
 export default Signin;

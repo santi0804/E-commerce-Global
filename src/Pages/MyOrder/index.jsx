@@ -1,13 +1,13 @@
-
+import Layout from "../../Components/Layout";
 
 
 function MyOrder() {
 
     return (
-
-        <div className="bg-black">
+        
+        <Layout>
             MyOrder
-        </div>
+        </Layout>
     )
 }
 export default MyOrder;

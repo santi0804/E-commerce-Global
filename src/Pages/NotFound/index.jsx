@@ -1,12 +1,13 @@
+import Layout from "../../Components/Layout";
 
 
 function NotFound() {
 
     return (
 
-        <div className="bg-black">
+        <Layout>
             NotFound
-        </div>
+        </Layout>
     )
 }
 export default NotFound;

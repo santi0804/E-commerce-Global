@@ -1,13 +1,14 @@
-
+import Layout from "../../Components/Layout";
 
 
 function Home() {
 
     return (
 
-        <div className="bg-orange-300">
+        <Layout>
             Home
-        </div>
+        </Layout>
+
     )
 }
 export default Home;

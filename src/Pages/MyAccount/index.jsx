@@ -1,13 +1,13 @@
-
+import Layout from "../../Components/Layout";
 
 
 function MyAccount() {
 
     return (
 
-        <div className="bg-black">
+        <Layout>
             MyAccount
-        </div>
+        </Layout>
     )
 }
 export default MyAccount;
