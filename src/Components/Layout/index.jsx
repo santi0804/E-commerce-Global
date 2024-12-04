@@ -4,7 +4,7 @@ const Layout = ({ children }) => {   // Encapsulamos el componente hijo o lo que
 
     return (
 
-        <div className="flex flex-col items-center mt-20">
+        <div className="flex flex-col items-center mt-20">  {/*Diseños Talwinds*/}
             {children}    
         </div>
     )

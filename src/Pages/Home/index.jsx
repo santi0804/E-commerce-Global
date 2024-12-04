@@ -5,7 +5,7 @@ import Card from "../../Components/Card";
 
 function Home() {
 
-    const [items, setItems] = useState(null);
+    const [items, setItems] = useState(null);  // este es un estado local.
 
     useEffect(() => {
         fetch('https://api.escuelajs.co/api/v1/products')
