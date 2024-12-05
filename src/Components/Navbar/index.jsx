@@ -1,7 +1,11 @@
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { ShoppingCarContext } from "../../Context";
 
 
 const Navbar = () => {
+
+    const context = useContext(ShoppingCarContext)  // este es el estado global, para aplicar el conteo en el carrito
     const activeStyle = "underline underline-offset-4"  // estas son las clases de Tailwinds linea subrayada.
 
 
@@ -55,7 +59,7 @@ const Navbar = () => {
                     <NavLink to='/sign-in' className={({ isActive }) => isActive ? activeStyle : undefined}>Sign In</NavLink>
                 </li>
 
-                <li className="font-semibold">🛒0 Añadir al carrito </li>
+                <li className="font-semibold">🛒{context.count} Añadir al carrito </li> {/*Con esta linea creamos el conteo en el carrito */}
             </ul>
         </nav>
     )

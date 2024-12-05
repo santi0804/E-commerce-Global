@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ShoppingCarContext } from "../../Context";
 
 const Card = (data) => {
-    const context = useContext(ShoppingCarContext)
+    const context = useContext(ShoppingCarContext)  // este es el estado global
 
     return (
         <div className="bg-white cursor-pointer w-56 h-60"> {/*Estilo de Tailwinds para el container principal */}
