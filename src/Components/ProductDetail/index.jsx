@@ -20,7 +20,7 @@ const ProductDetail = () => {
 
             <figure className=" px-6">
                 <img className='w-full h-full rounded-lg' 
-                src={context.productToShwow.images}  /* SI neceito que me traiga la primera imagen del set de card agrego un arreglo en ceros asi[0]*/
+                src={context.productToShwow.images?.[0]}  /* SI neceito que me traiga la primera imagen del set de card agrego un arreglo en ceros asi[0]*/
                 alt={context.productToShwow.title} />
             </figure>
             <p className="flex flex-col p-6">

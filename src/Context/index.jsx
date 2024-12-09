@@ -8,8 +8,11 @@ export const ShoppinCartProvider = ({ children }) => {
     const openProductDetail = () => setIsProductDetailOpen(true);
     const closeProductDetail = () => setIsProductDetailOpen(false);
 
-    // produdct detail - Show product
-    const [productToShwow, setproductToShow] = useState({});  // Se le asigna un Objeto vacio
+    // product detail - Show product
+    const [productToShwow, setProductToShow] = useState({});  // Se le asigna un Objeto vacio
+
+    // Shopping cart - Add productos to cart
+    const [cartProducts, setCartProducts] = useState([]);
 
 
     return (
@@ -20,7 +23,9 @@ export const ShoppinCartProvider = ({ children }) => {
             closeProductDetail,
             isProductDetailOpen,
             productToShwow,
-            setproductToShow
+            setProductToShow,
+            cartProducts,
+            setCartProducts
         }}>
             {children}
         </ShoppingCarContext.Provider>
