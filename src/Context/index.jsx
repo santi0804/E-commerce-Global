@@ -4,10 +4,13 @@ export const ShoppingCarContext = createContext()
 
 export const ShoppinCartProvider = ({ children }) => {
     const [count, setCount] = useState(0);
-    const [isProductDetailOpen, setisProductDetailOpen] = useState(false);
-    const openProductDetail = () => setisProductDetailOpen(true);
-    const closeProductDetail = () => setisProductDetailOpen(false);
-    
+    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+    const openProductDetail = () => setIsProductDetailOpen(true);
+    const closeProductDetail = () => setIsProductDetailOpen(false);
+
+    // produdct detail - Show product
+    const [productToShwow, setproductToShow] = useState({});  // Se le asigna un Objeto vacio
+
 
     return (
         <ShoppingCarContext.Provider value={{
@@ -15,7 +18,9 @@ export const ShoppinCartProvider = ({ children }) => {
             setCount,
             openProductDetail,
             closeProductDetail,
-            isProductDetailOpen
+            isProductDetailOpen,
+            productToShwow,
+            setproductToShow
         }}>
             {children}
         </ShoppingCarContext.Provider>
