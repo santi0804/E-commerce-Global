@@ -5,15 +5,17 @@ import { ShoppingCarContext } from "../../Context";
 const Card = (data) => {
     const context = useContext(ShoppingCarContext)  // este es el estado global
 
-    const showProduct = (productDetail) => {
-        context.openProductDetail()
+    const showProduct = (productDetail) => {       // Esta function activa el detalle en la ventanita.
+        context.openProductDetail()                //pendiente por organizar ?   
         context.setproductToShow(productDetail)
     }
 
-    const addProductsToCart = (productData) => {
+    const addProductsToCart = (event, productData) => {
+        event.stopPropagation()
         context.setCount(context.count + 1)
         context.setCartProducts([...context.cartProducts, productData])    // Lo que tu ya tienes lo dejes y adicional agregues un nuevo elemento.
-        console.log('CART: ', context.cartProducts)
+        context.openCheckoutSideMenu()
+        context.closeProductDetail()
 
     }
 
@@ -27,8 +29,8 @@ const Card = (data) => {
 
                 <div
                     className="absolute top-0  right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-                    onClick={() => addProductsToCart(data.data)}>
-                    <PlusIcon className="size-6 text-black"></PlusIcon>
+                    onClick={(event) => addProductsToCart(event, data.data)}>
+                    <PlusIcon className="size-6 text-black"></PlusIcon> {/*Este es el icono + */}
                 </div>
             </figure>
 

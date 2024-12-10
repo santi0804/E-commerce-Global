@@ -1,5 +1,4 @@
 
-
 const Layout = ({ children }) => {   // Encapsulamos el componente hijo o lo que venga  para mostrar.
 
     return (

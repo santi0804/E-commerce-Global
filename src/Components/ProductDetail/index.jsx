@@ -20,13 +20,13 @@ const ProductDetail = () => {
 
             <figure className=" px-6">
                 <img className='w-full h-full rounded-lg' 
-                src={context.productToShwow.images?.[0]}  /* SI neceito que me traiga la primera imagen del set de card agrego un arreglo en ceros asi[0]*/
-                alt={context.productToShwow.title} />
+                src={context.productToShow.images}  /* SI neceito que me traiga la primera imagen del set de card agrego un arreglo en ceros asi[0]*/
+                alt={context.productToShow.title} />
             </figure>
             <p className="flex flex-col p-6">
-                <span className=" font-medium text-2xl mb-2">{context.productToShwow.price}</span>
-                <span className=" font-medium text-md">{context.productToShwow.title}</span>
-                <span className=" font-light text-sm">{context.productToShwow.decription}</span>
+                <span className=" font-medium text-2xl mb-2">{context.productToShow.price}</span>
+                <span className=" font-medium text-md">{context.productToShow.title}</span>
+                <span className=" font-light text-sm">{context.productToShow.decription}</span>
             </p>
         </aside>
     )
