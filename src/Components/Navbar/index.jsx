@@ -1,12 +1,12 @@
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import { ShoppingCarContext } from "../../Context";
+import { ShoppingCartContext } from "../../Context";
 
 
 const Navbar = () => {
 
-    const context = useContext(ShoppingCarContext)  // este es el estado global, para aplicar el conteo en el carrito
+    const context = useContext(ShoppingCartContext)  // este es el estado global, para aplicar el conteo en el carrito
     const activeStyle = "underline underline-offset-4"  // estas son las clases de Tailwinds linea subrayada.
 
 

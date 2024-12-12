@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-export const ShoppingCarContext = createContext();
+export const ShoppingCartContext = createContext();
 
 export const ShoppinCartProvider = ({ children }) => {
 
@@ -18,15 +18,15 @@ export const ShoppinCartProvider = ({ children }) => {
     const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
 
     // Product Detail-Show product
-    const [productToShow, setProductToShow] = useState({});  // Se le asigna un Objeto vacio
-
+    const [productToShow, setProductToShow] = useState({});  // Se le asigna un Objeto vacio.
+        
     // Shopping Cart- Add products to cart
     const [cartProducts, setCartProducts] = useState([]);
 
 
     return (
-        <ShoppingCarContext.Provider
-            value={{
+        <ShoppingCartContext.Provider
+            value= {{
                 count,                   // Contador del carrito
                 setCount,                // Función para actualizar el contador
                 openProductDetail,       // Función para abrir el detalle
@@ -41,7 +41,7 @@ export const ShoppinCartProvider = ({ children }) => {
                 closeCheckoutSideMenu
             }}>
             {children}
-        </ShoppingCarContext.Provider>
+        </ShoppingCartContext.Provider>
 
     )
 }

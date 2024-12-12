@@ -1,13 +1,13 @@
 import { PlusIcon } from '@heroicons/react/24/solid'
 import { useContext } from "react";
-import { ShoppingCarContext } from "../../Context";
+import { ShoppingCartContext } from "../../Context";
 
 const Card = (data) => {
-    const context = useContext(ShoppingCarContext)  // este es el estado global
+    const context = useContext(ShoppingCartContext)  // este es el estado global
 
     const showProduct = (productDetail) => {       // Esta function activa el detalle en la ventanita.
         context.openProductDetail()                //pendiente por organizar ?   
-        context.setproductToShow(productDetail)
+        context.setProductToShow(productDetail)
     }
 
     const addProductsToCart = (event, productData) => {
