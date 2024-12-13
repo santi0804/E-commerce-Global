@@ -19,14 +19,17 @@ export const ShoppinCartProvider = ({ children }) => {
 
     // Product Detail-Show product
     const [productToShow, setProductToShow] = useState({});  // Se le asigna un Objeto vacio.
-        
+
     // Shopping Cart- Add products to cart
     const [cartProducts, setCartProducts] = useState([]);
+
+    // Shopping Cart- Order
+    const [order, setOrder] = useState([]);  //<== aqui si debe de ser un Array, vacio
 
 
     return (
         <ShoppingCartContext.Provider
-            value= {{
+            value={{
                 count,                   // Contador del carrito
                 setCount,                // Función para actualizar el contador
                 openProductDetail,       // Función para abrir el detalle
@@ -38,7 +41,9 @@ export const ShoppinCartProvider = ({ children }) => {
                 setCartProducts,         // Función para actualizar el carrito
                 isCheckoutSideMenuOpen,
                 openCheckoutSideMenu,
-                closeCheckoutSideMenu
+                closeCheckoutSideMenu,
+                order,
+                setOrder
             }}>
             {children}
         </ShoppingCartContext.Provider>
