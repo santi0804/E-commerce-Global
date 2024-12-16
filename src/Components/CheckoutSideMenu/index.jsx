@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from 'react-router-dom';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { ShoppingCartContext } from "../../Context";
 import OrderCard from "../../Components/OrderCard";
@@ -14,15 +15,15 @@ const CheckoutSideMenu = () => {
         context.setCartProducts(filteredProducts)
     }
 
-    const handleCheckout = () => {
+    const handleCheckout = () => {  // Este es el objeto que nos arroja la info de la orden de compra.
         const orderToAdd = {
-            date: '14.12.24',
+            date: '01.12.24',
             products: context.cartProducts,
-            totalProducts: context.cartProducts.length,
+            totalProducts: context.cartProducts.length,  // aqui el contexto toma el tamaño.
             totalPrice: totalPrice(context.cartProducts)
         }
 
-        context.setOrder([...context.order, orderToAdd])
+        context.setOrder([...context.order, orderToAdd]) // con esta linea se setea la orden del objeto.
         context.setCartProducts([])  // Array vacio para limpiar la orden que ya este lista
     }
 
@@ -38,7 +39,7 @@ const CheckoutSideMenu = () => {
                 </div> {/*Funcion para borrar los detalles de la vista con la X */}
             </div>
 
-            <div className="px-6 overflow-y-scroll flex-1">
+            <div className="px-6 overflow-y-scroll flex-1">  {/*Con el flex-1 nos posiciona el boton en la parte de abajo */}
                 {
                     context.cartProducts.map(product => (
                         <OrderCard
@@ -57,7 +58,10 @@ const CheckoutSideMenu = () => {
                     <span className="font-light">Total:</span>
                     <span className="font-medium text-2xl">${totalPrice(context.cartProducts)}</span>
                 </p>
-                <button className="w-full bg-black py-3 text-white rounded-lg" onClick={() => handleCheckout()}>Checkout</button>
+                <Link to='/my-orders/last'> {/*Con esta linea es hacia donde vamos a necesitar esta redirección */}
+                    <button className="w-full bg-black py-3 text-white rounded-lg" onClick={() => handleCheckout()}>Checkout</button>
+                </Link>
+
             </div>
         </aside>
     )
