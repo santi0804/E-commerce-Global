@@ -17,6 +17,7 @@ const AppRoutes = () => {
         { path: '/my-order', element: <MyOrder /> },
         { path: '/my-orders', element: <MyOrders /> },
         { path: '/my-orders/last', element: <MyOrder /> },
+        { path: '/my-orders/:id', element: <MyOrder /> }, // Aqui con el id l estamos indicando con ese id viene algo, para que lo identifique.
         { path: '/sign-in', element: <Signin /> },
         { path: '/*', element: <NotFound /> },  //A este Componente se le debe de asignar cualquier otra ruta que no exista
 
