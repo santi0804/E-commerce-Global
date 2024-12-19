@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const ShoppingCartContext = createContext();
 
@@ -26,6 +26,15 @@ export const ShoppinCartProvider = ({ children }) => {
     // Shopping Cart- Order
     const [order, setOrder] = useState([]);  //<== aqui si debe de ser un Array, vacio
 
+    // Get product
+    const [items, setItems] = useState(null);  // este era un estado local. desde el Home.
+
+    useEffect(() => {
+        fetch('https://api.escuelajs.co/api/v1/products')
+            .then(response => response.json())
+            .then(data => setItems(data))
+    }, [])
+
 
     return (
         <ShoppingCartContext.Provider
@@ -43,7 +52,9 @@ export const ShoppinCartProvider = ({ children }) => {
                 openCheckoutSideMenu,
                 closeCheckoutSideMenu,
                 order,
-                setOrder
+                setOrder,
+                items,
+                setItems
             }}>
             {children}
         </ShoppingCartContext.Provider>
