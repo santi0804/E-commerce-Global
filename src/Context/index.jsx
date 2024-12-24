@@ -29,6 +29,11 @@ export const ShoppinCartProvider = ({ children }) => {
     // Get product
     const [items, setItems] = useState(null);  // este era un estado local. desde el Home.
 
+    // Get product by title.
+    const [searchByTitle, setsearchByTitle] = useState(null);
+    console.log('searchByTitle:', searchByTitle)
+
+
     useEffect(() => {
         fetch('https://api.escuelajs.co/api/v1/products')
             .then(response => response.json())
@@ -54,7 +59,9 @@ export const ShoppinCartProvider = ({ children }) => {
                 order,
                 setOrder,
                 items,
-                setItems
+                setItems,
+                searchByTitle,
+                setsearchByTitle
             }}>
             {children}
         </ShoppingCartContext.Provider>

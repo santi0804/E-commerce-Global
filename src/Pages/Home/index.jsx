@@ -18,7 +18,7 @@ function Home() {
                 type="text"
                 placeholder="Search a product"
                 className="rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none"
-                onChange={(event) => event.target.value } />
+                onChange={(event) => context.setsearchByTitle(event.target.value)} />
             <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg"> {/*Con esta linea mostramos los productos en columnas diferentes */}
                 {
                     context.items?.map(items => (
