@@ -28,17 +28,29 @@ export const ShoppinCartProvider = ({ children }) => {
 
     // Get product
     const [items, setItems] = useState(null);  // este era un estado local. desde el Home.
+    const [filteredItems, setFilteredItems] = useState(null);
 
     // Get product by title.
     const [searchByTitle, setsearchByTitle] = useState(null);
-    console.log('searchByTitle:', searchByTitle)
 
 
     useEffect(() => {
         fetch('https://api.escuelajs.co/api/v1/products')
             .then(response => response.json())
-            .then(data => setItems(data))
+            .then((data) => setItems(data))
     }, [])
+
+    // Logica para filtrar en el buscador rapido.
+    const filteredItemsByTitle = (items, searchByTitle) => {
+        return items?.filter(
+            (item) =>
+                typeof item.title === "string" &&
+                item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+    }
+
+    useEffect(() => {
+        if (searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle))
+    }, [items, searchByTitle])
 
 
     return (
@@ -61,7 +73,8 @@ export const ShoppinCartProvider = ({ children }) => {
                 items,
                 setItems,
                 searchByTitle,
-                setsearchByTitle
+                setsearchByTitle,
+                filteredItems,
             }}>
             {children}
         </ShoppingCartContext.Provider>
