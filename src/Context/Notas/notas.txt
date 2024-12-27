@@ -1,0 +1,6 @@
+// Logica para filtrar en el buscador rapido por categoria.
+    const filteredItemsByCategory = (items, searchByCategory) => {
+        return items?.filter((item) =>
+                typeof item.category === "string" &&  // Validación del item.title
+                item.category.name.toLowerCase().includes(searchByCategory.toLowerCase()))
+    }

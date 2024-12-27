@@ -25,6 +25,7 @@ const CheckoutSideMenu = () => {
 
         context.setOrder([...context.order, orderToAdd]) // con esta linea se setea la orden del objeto.
         context.setCartProducts([])  // Array vacio para limpiar la orden que ya este lista
+        context.setsearchByTitle(null)
     }
 
     return (

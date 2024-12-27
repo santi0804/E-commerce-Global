@@ -45,19 +45,12 @@ export const ShoppinCartProvider = ({ children }) => {
 
     // Logica para filtrar en el buscador rapido po titulo.
     const filteredItemsByTitle = (items, searchByTitle) => {
-        return items?.filter(
-            (item) =>
-                typeof item.title === "string" &&  // Validación del item.title
-                item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+        return items?.filter((item) => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
     }
 
     // Logica para filtrar en el buscador rapido por categoria.
     const filteredItemsByCategory = (items, searchByCategory) => {
-        console.log('items: ', items)
-        return items?.filter(
-            (item) =>
-                typeof item.category === "string" &&  // Validación del item.title
-                item.category.name.toLowerCase().includes(searchByCategory.toLowerCase()))
+        return items?.filter((item) => item.category.name.toLowerCase().includes(searchByCategory.toLowerCase()))
     }
 
     const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
@@ -86,8 +79,6 @@ export const ShoppinCartProvider = ({ children }) => {
         if (!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory))
 
     }, [items, searchByTitle, searchByCategory])
-
-    console.log('filteredItems: ', filteredItems)
 
 
     return (
