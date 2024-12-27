@@ -33,6 +33,9 @@ export const ShoppinCartProvider = ({ children }) => {
     // Get product by title.
     const [searchByTitle, setsearchByTitle] = useState(null);
 
+    // Get product by Category.
+    const [searchByCategory, setSearchByCategory] = useState(null);
+
 
     useEffect(() => {
         fetch('https://api.escuelajs.co/api/v1/products')
@@ -40,17 +43,51 @@ export const ShoppinCartProvider = ({ children }) => {
             .then((data) => setItems(data))
     }, [])
 
-    // Logica para filtrar en el buscador rapido.
+    // Logica para filtrar en el buscador rapido po titulo.
     const filteredItemsByTitle = (items, searchByTitle) => {
         return items?.filter(
             (item) =>
-                typeof item.title === "string" &&
+                typeof item.title === "string" &&  // Validación del item.title
                 item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
     }
 
+    // Logica para filtrar en el buscador rapido por categoria.
+    const filteredItemsByCategory = (items, searchByCategory) => {
+        console.log('items: ', items)
+        return items?.filter(
+            (item) =>
+                typeof item.category === "string" &&  // Validación del item.title
+                item.category.name.toLowerCase().includes(searchByCategory.toLowerCase()))
+    }
+
+    const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
+        if (searchType === 'BY_TITLE') {
+            return filteredItemsByTitle(items, searchByTitle)
+        }
+
+        if (searchType === 'BY_CATEGORY') {
+            return filteredItemsByCategory(items, searchByCategory)
+        }
+
+        if (searchType === 'BY_TITLE_AND_CATEGORY') {
+            return filteredItemsByCategory(items, searchByCategory).filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+        }
+
+        if (!searchType) {  // si no tiene nigun filtro traem todos los items
+            return items
+        }
+
+    }
+
     useEffect(() => {
-        if (searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle))
-    }, [items, searchByTitle])
+        if (searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_TITLE_AND_CATEGORY', items, searchByTitle, searchByCategory))
+        if (searchByTitle && !searchByCategory) setFilteredItems(filterBy('BY_TITLE', items, searchByTitle, searchByCategory))
+        if (!searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory))
+        if (!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory))
+
+    }, [items, searchByTitle, searchByCategory])
+
+    console.log('filteredItems: ', filteredItems)
 
 
     return (
@@ -75,6 +112,8 @@ export const ShoppinCartProvider = ({ children }) => {
                 searchByTitle,
                 setsearchByTitle,
                 filteredItems,
+                searchByCategory,
+                setSearchByCategory
             }}>
             {children}
         </ShoppingCartContext.Provider>
